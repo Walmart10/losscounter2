@@ -1,0 +1,25 @@
+{
+  "name": "losscounter2",
+  "version": "1.0.0",
+  "description": "This is a counter to see who loses between me and my friends.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Walmart10/losscounter2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Walmart10/losscounter2/issues"
+  },
+  "homepage": "https://github.com/Walmart10/losscounter2#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "helmet": "^4.1.1",
+    "pg": "^8.3.3"
+  }
+}
