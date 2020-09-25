@@ -1,4 +1,7 @@
-import { Pool } from "pg";
+const { Pool } = require("pg");
+const express = require("express");
+const helmet = require("helmet");
+const path = require("path");
 
 const pool = new Pool({
   user: "eymymdky",
@@ -13,17 +16,19 @@ pool.on("error", (err, client) => {
   process.exit(-1);
 });
 
-pool.connect((err, client, done) => {
-  if (err) throw err;
-  client.query("SELECT * FROM people", (err, res) => {
-    done();
+const app = express();
+const port = 5000;
 
-    if (err) {
-      console.log(err.stack);
-    } else {
-      for (let row of res.rows) {
-        console.log(row);
-      }
-    }
-  })
+app.use(express.static("./browser"));
+app.use(helmet());
+
+app.get("/", (req, res) => {
+  res.sendFile("home.html", { root: __dirname+"\\browser" });
+});
+
+app.get("/get_data", (req, res) => {
+  res.send(200);
 })
+
+console.log("Listening on port ", port);
+app.listen(port);

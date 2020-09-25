@@ -1,9 +1,3 @@
-$(document).ready(() => {
-  $("#fetch").click(() => {
-    $.ajax({
-      method: "GET",
-      url: "/data"
-      context: document.body
-    });
-  })
-})
+function get_data() {
+  console.log("some data")
+}
