@@ -16,7 +16,8 @@ $(document).ready(() => {
             url: "/get_data",
             context: document.body,
         }).done((data) => {
-			makeTable(data, "table");
+			makeTable(data, "#people");
         })
     });
 });
+ic 
