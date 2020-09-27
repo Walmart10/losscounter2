@@ -9,7 +9,25 @@ function makeTable(jsonData, tableName) {
 	});
 }
 
+function makeButtons(jsonData, divId) {
+	$.each(jsonData, function (i, item) {
+		$(divId).append(
+			$("<button>").text(jsonData.losers).attr("id", jsonData.losers.toLowerCase())
+		)
+	});
+}
+
 $(document).ready(() => {
+	$.ajax({
+            method: "POST",
+            url: "/get_data",
+            context: document.body,
+        }).done((data) => {
+			makeTable(data, "#people");
+			makeButton(data, "choices");
+        });
+	});
+	
     $("#data").click(() => {
         $.ajax({
             method: "POST",
@@ -17,7 +35,7 @@ $(document).ready(() => {
             context: document.body,
         }).done((data) => {
 			makeTable(data, "#people");
-        })
+//			makeButton(data, "choices");
+        });
     });
 });
-ic 
