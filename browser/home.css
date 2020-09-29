@@ -1,0 +1,9 @@
+* {
+	font-family: 'Roboto Slab', serif;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+table, th, td {
+	border: 1px solid black;
+}

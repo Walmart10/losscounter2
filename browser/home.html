@@ -2,8 +2,12 @@
 <html>
   <head>
     <title>Loss Counter 2.0</title>
+	
+	<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="alertify.min.css">
     <link rel="stylesheet" href="home.css">
 
+	<script src="alertify.min.js"></script>
     <script src="jquery.min.js"></script>
     <script src="home.js"></script>
   </head>
@@ -11,8 +15,20 @@
     <h1>Loss Counter 2.0</h1>
 	
 	<div id="choices"></div>
+	<p>Picked: <a id="picked">None</a></p>
+	<br>
+	
+	<div id="navs">
+		<button id="continue" class="button">Continue</button>
+		<button id="reset" class="button">Reset</button>
+	</div>
+	<br>
 
-    <button id="data">Get Data</button>
-    <table id="people"></table>
+    <button id="data" class="button">Get Data</button>
+	<br><br>
+    <table id="people">
+		<th>Losers</th>
+		<th>Times</th>
+	</table>
   </body>
 </html>

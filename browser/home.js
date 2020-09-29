@@ -9,13 +9,9 @@ function makeTable(jsonData, tableName) {
 	});
 }
 
-function makeButtons(jsonData, divId) {
-	$.each(jsonData, function (i, item) {
-		$(divId).append(
-			$("<button>").text(jsonData.losers).attr("id", jsonData.losers.toLowerCase())
-		)
-	});
-}
+String.prototype.toTitleCase = function () {
+    return this.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+};
 
 $(document).ready(() => {
 	$.ajax({
@@ -24,18 +20,38 @@ $(document).ready(() => {
             context: document.body,
         }).done((data) => {
 			makeTable(data, "#people");
-			makeButton(data, "choices");
-        });
+			$.each(data, function (i, item) {
+				$("#choices").append(
+					$("<button>").text(item.losers)
+								 .attr("id", item.losers.toLowerCase())
+								 .attr("class", "button")
+				);
+			});
+		});
+
+    $("#data").click(() => {
+		location.reload();
+    });
+
+	let pickedWho = null;
+	$("#picked").text("None");
+
+	$("#continue").click(() => {
+		if (pickedWho == null) {
+			alertify.defaults.glossary.title = "Error!";
+			alertify.alert("Please pick a name");
+		} else {
+			
+		}
 	});
 	
-    $("#data").click(() => {
-        $.ajax({
-            method: "POST",
-            url: "/get_data",
-            context: document.body,
-        }).done((data) => {
-			makeTable(data, "#people");
-//			makeButton(data, "choices");
-        });
-    });
+	$("#choices").on("click", "button", (e) => {
+		pickedWho = e.target.id.toTitleCase();
+		$("#picked").text(pickedWho);
+	});
+	
+	$("#reset").click(() => {
+		pickedWho = null
+		$("#picked").text("None");
+	});
 });
