@@ -24,7 +24,7 @@ $(document).ready(() => {
 				$("#choices").append(
 					$("<button>").text(item.losers)
 								 .attr("id", item.losers.toLowerCase())
-								 .attr("class", "button")
+								 .attr("class", "losers")
 				);
 			});
 		});
@@ -41,7 +41,7 @@ $(document).ready(() => {
 			alertify.defaults.glossary.title = "Error!";
 			alertify.alert("Please pick a name");
 		} else {
-			
+			window.open(`/counter.html?loser=${pickedWho}`, "_self");
 		}
 	});
 	
@@ -51,7 +51,7 @@ $(document).ready(() => {
 	});
 	
 	$("#reset").click(() => {
-		pickedWho = null
+		pickedWho = null;
 		$("#picked").text("None");
 	});
 });

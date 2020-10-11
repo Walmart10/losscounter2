@@ -4,6 +4,19 @@
 	margin-right: auto;
 	text-align: center;
 }
+
 table, th, td {
 	border: 1px solid black;
+}
+
+.losers {
+	height: 50px;
+	width: 100px;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.navs {
+	height: 40px;
+	width: 90px;
 }

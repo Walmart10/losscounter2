@@ -38,5 +38,12 @@ app.post("/get_data", (req, res) => {
 	});
 });
 
+app.put("/put_data", (req, res) => {
+	let loser = req.query.loser;
+	let clicks = req.query.clicks;
+	console.log(`${loser}: ${clicks}`);
+	res.sendStatus(200);
+});
+
 console.log("Listening on port", port);
 app.listen(port);
