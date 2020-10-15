@@ -24,7 +24,7 @@ app.use(helmet());
 
 app.get("/", (req, res) => {
 	res.sendFile("home.html", {
-		root: __dirname + "\\browser"
+		root: __dirname + "/browser"
 	});
 });
 
@@ -43,6 +43,17 @@ app.put("/put_data", (req, res) => {
 	let clicks = req.query.clicks;
 	console.log(`${loser}: ${clicks}`);
 	res.sendStatus(200);
+});
+
+app.post("/get_amount", (req, res) => {
+	let loser = req.query.loser;
+	pool.query("select * from people where losers = $1", [loser], (error, response) => {
+		if (error) {
+			console.log(error.stack);
+		} else {
+			res.send(JSON.stringify(response.rows));
+		}
+	});
 });
 
 console.log("Listening on port", port);

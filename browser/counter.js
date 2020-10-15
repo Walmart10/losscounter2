@@ -5,18 +5,31 @@ function whoIs() {
 }
 
 let clicks = 0;
-
 function count(who) {
     clicks++;
-    console.log(clicks);
     $.ajax({
         type: "PUT",
         url: `/put_data?loser=${who}&clicks=${clicks}`,
-        context: document.body
+    }).done((data) => {
+        $("#clicks").text(clicks);
+    });
+}
+
+function getCount(who) {
+    $.ajax({
+        type: "POST",
+        url: `/get_amount?loser=${who}`
+    }).done((data) => {
+        var amount = data.match(/\d+/g);
+        $("#clicks").text(amount);
+        clicks = +amount;
     });
 }
 
 $(document).ready(() => {
+    $("#loser").text(whoIs());
+    getCount(whoIs());
+
     $("#counter").click(() => {
         count(whoIs());
     });
