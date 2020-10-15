@@ -41,7 +41,11 @@ app.post("/get_data", (req, res) => {
 app.put("/put_data", (req, res) => {
 	let loser = req.query.loser;
 	let clicks = req.query.clicks;
-	console.log(`${loser}: ${clicks}`);
+	pool.query("update people set times = $1 where losers = $2", [clicks, loser], (error, response) => {
+		if (error) {
+			console.log(error.stack);
+		}
+	})
 	res.sendStatus(200);
 });
 
