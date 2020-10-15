@@ -1,0 +1,13 @@
+* {
+	font-family: 'Roboto Slab', serif;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+#counter {
+	height: 50px;
+	width: 100px;
+}
+#directions {
+	font-size: 11pt;
+}
